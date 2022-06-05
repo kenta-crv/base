@@ -147,9 +147,12 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (4.0.7)
-    puma (3.12.6)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3.1)
     rack-test (1.1.0)
@@ -257,6 +260,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   annotate
@@ -274,7 +278,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   meta-tags
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   sass-rails (~> 5.0)
   selenium-webdriver
