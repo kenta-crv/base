@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  layout "froala"
   before_action :authenticate_admin!, except: [:index, :show]
   add_breadcrumb "記事一覧", :posts_path
 
@@ -7,10 +6,26 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: "DESC").page(params[:page])
   end
 
-  def show
-    @post = Post.find(params[:id])
-    add_breadcrumb @post.title
+def show
+  @post = Post.find(params[:id])
+
+  # 不要な inline style や <span style=""> を除去
+  sanitized_body = @post.body.gsub(/<span[^>]*>|<\/span>/, '')
+                             .gsub(/ style="[^"]*"/, '')
+
+  @headings = []
+  @post_body_with_ids = sanitized_body.gsub(/<(h[2-4])>(.*?)<\/\1>/m) do |match|
+    if match =~ /<(h[2-4])>(.*?)<\/\1>/m
+      tag = $1
+      text = $2
+      idx = @headings.size
+      @headings << { tag: tag, text: text, id: "heading-#{idx}", level: tag[1].to_i }
+      "<#{tag} id='heading-#{idx}'>#{text}</#{tag}>"
+    else
+      match
+    end
   end
+end
 
   def new
     @post = Post.new

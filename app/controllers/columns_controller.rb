@@ -10,7 +10,6 @@ before_action :authenticate_admin!, except: [:index, :show]
 
   def new
     @column = Column.new
-    render :layout => "froala"
   end
 
   def create
@@ -24,7 +23,6 @@ before_action :authenticate_admin!, except: [:index, :show]
 
   def edit
     @column = Column.find(params[:id])
-    render :layout => "froala"
   end
 
   def destroy
@@ -46,6 +44,7 @@ before_action :authenticate_admin!, except: [:index, :show]
   def column_params
     params.require(:column).permit(
       :title, #タイトル
+      :file,
       :kategory, #カテゴリー
       :description, #説明
       :heading_1, #見出し

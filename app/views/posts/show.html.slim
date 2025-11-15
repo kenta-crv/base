@@ -1,11 +1,15 @@
-- set_meta_tags  title: @post.title
-- set_meta_tags  keyword: @post.keyword
-- set_meta_tags  description: @post.description
-br
-br
-#post-detail.tops-wrapper
-  .fr-view
-	  h1.headline-first  = @post.title
-       - if @post.file?
-        .image_post  = image_tag @post.file.url
-	  p#book_content  = @post.body.html_safe
+.blog-container
+  .container
+    h1.column-title = @post.title
+
+    - if @headings.any?
+      .toc
+        h2.toc-title
+          | 目次
+        ul.toc-list
+          - @headings.each do |h|
+            li class="toc-item toc-level-#{h[:level]}"
+              a href="##{h[:id]}" = h[:text]
+
+    .column-body
+      == raw(@post_body_with_ids)

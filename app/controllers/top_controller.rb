@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-    @top = Top.new
+    @contract = Contract.new
   end
 
   def lp 

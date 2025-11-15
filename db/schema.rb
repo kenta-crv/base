@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_06_031646) do
+ActiveRecord::Schema.define(version: 2025_11_13_124605) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2024_06_06_031646) do
     t.string "content_20"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -205,6 +206,9 @@ ActiveRecord::Schema.define(version: 2024_06_06_031646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+# Could not dump table "new_contracts" because of following StandardError
+#   Unknown type 'NUM' for column 'created_at'
 
   create_table "outsourcings", force: :cascade do |t|
     t.string "first_name"

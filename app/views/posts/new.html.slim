@@ -1,7 +1,14 @@
-- set_meta_tags noindex: true
+.container
+  h1 新規記事作成
 
-.tops-wrapper
-br
-  h2.headline  新着記事作成
-br
-    == render 'form' 
+  = form_with model: @post, local: true do |f|
+    .form-group
+      = f.label :title, "タイトル"
+      = f.text_field :title, class: "form-control", placeholder: "記事タイトルを入力"
+
+    .form-group
+      = f.label :body, "本文（HTML形式可）"
+      = f.text_area :body, class: "form-control", rows: 15, placeholder: "例：<h2>見出し</h2><p>本文</p>"
+
+    .form-group
+      = f.submit "作成", class: "btn btn-primary mt-3"

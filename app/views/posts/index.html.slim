@@ -1,27 +1,28 @@
-- set_meta_tags  title: 'テレアポ代行のノウハウ知ろう｜株式会社Ri-Plus'
+- set_meta_tags  title: 'テレアポ代行のノウハウ知ろう｜アポ匠'
 - set_meta_tags  description: 'テレアポ代行のノウハウや選び方、基礎知識を紹介しています。'
+- set_meta_tags title: 'テレアポ代行のノウハウ知ろう｜アポ匠'
+- set_meta_tags description: 'テレアポ代行のノウハウや選び方、基礎知識を紹介しています。'
 
-.tops-wrapper
-  .row
-    .col-sm-12
-      h1.headline
-        | 新着記事
+.section-knowhow
+  .container
+    h1.section-title
+      | 新着記事
+
+    .columns-grid
       - @posts.each do |post|
-        .row
-          .col-sm-5
-            = image_tag post.file.to_s, width:"80%", class:"post-space"
-          .col-sm-7.post-base
-            .post-title
+        .column-card
+          .column-image
+            = link_to image_tag(post.file.to_s, class: 'post-thumb', alt: post.title), post_path(post)
+          .column-content
+            h2.column-title
               = link_to post.title, post_path(post)
-            .post-description
-              = post.description.html_safe
-              - if admin_signed_in?
-                = link_to '編集  ', edit_post_path(post), class: 'command'
-                = link_to '  削除',
-                 			            	post_path(post),
-                 			            	method: :delete,
-                 			            	class: 'command',
-                 			            	data: { confirm: '本当に削除しますか？'}
-        br
-        hr
+            .column-description
+              - if post.description.present?
+                = truncate(strip_tags(post.description), length: 120)
+            - if admin_signed_in?
+              .column-admin-links
+                = link_to '編集', edit_post_path(post), class: 'btn-edit'
+                = link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-delete'
+
+    .pagination-wrapper
       = paginate @posts

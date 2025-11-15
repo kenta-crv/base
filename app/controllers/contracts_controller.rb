@@ -25,11 +25,24 @@ class ContractsController < ApplicationController
       end
     end
   
-    def create
-      @contract = Contract.new(contract_params)
-      @contract.save
-      redirect_to thanks_contracts_path
+def create
+  @contract = Contract.new(contract_params)
+
+  if @contract.save
+
+    # ▼ root（TOPページ）から来た場合だけ管理者メール送信
+    if request.referer.present? && URI(request.referer).path == root_path
+      ContractMailer.received_email(@contract).deliver
     end
+
+    flash[:notice] = "送信完了しました"
+    redirect_to root_path
+
+  else
+    render :new
+  end
+end
+
   
     def show
       @contract = Contract.find(params[:id])

@@ -41,7 +41,6 @@ Rails.application.routes.draw do
     resource :script #1:1
     collection do
       post :confirm
-      post :thanks
     end
     member do
       post :send_mail
@@ -53,7 +52,7 @@ Rails.application.routes.draw do
       get "start"
     end
   end
-
+  get "contracts/thanks", to: "contracts#thanks"
 
   get 'script' => 'top#script'
   get 'workers/new' => 'workers#new'
