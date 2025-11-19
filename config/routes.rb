@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admins
-
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations'
+  }
   root to: 'top#index' #トップランディングページ
 
     #get 'apotakumi' => 'top#apotakumi' #エンジランス
