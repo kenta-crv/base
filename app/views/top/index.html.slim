@@ -47,10 +47,22 @@
                     = f.text_field :company, class: "form-control hero-main-input", placeholder: "株式会社〇〇〇〇", required: true
                   .col-12
                     label.form-label.hero-main-label
-                      | お名前 
+                      | ご担当者様名
                       span.required-badge
                         | 必須
                     = f.text_field :name, class: "form-control hero-main-input", placeholder: "山田太郎", required: true
+                  .col-12
+                    label.form-label.hero-main-label
+                      | 電話番号 
+                      span.required-badge
+                        | 必須
+                    = f.telephone_field :tel, class: "form-control hero-main-input", placeholder: "050-1234-5678", required: true
+                  .col-12
+                    label.form-label.hero-main-label
+                      | URL
+                      span.required-badge
+                        | 必須
+                    = f.url_field :url, class: "form-control hero-main-input", placeholder: "https://ri-plus.jp/", required: true
                   .col-12
                     label.form-label.hero-main-label
                       | 会社のメールアドレス 
@@ -59,10 +71,10 @@
                     = f.email_field :email, class: "form-control hero-main-input", placeholder: "test@example.com", required: true
                   .col-12
                     label.form-label.hero-main-label
-                      | 電話番号 
+                      | 備考・要望 
                       span.required-badge
-                        | 必須
-                    = f.telephone_field :tel, class: "form-control hero-main-input", placeholder: "050-1234-5678", required: true
+                        | 任意
+                    = f.text_area :message, class: "form-control hero-main-input", placeholder:"（例）お問い合わせ内容"
                   .col-12
                     = f.submit "まずは無料で見積から", class: "btn hero-main-submit w-100"
 
@@ -271,6 +283,150 @@
                 | Webマーケティング業
               p.cards-moos-desc
                 |  当社でお取引頂く以前は4社を活用し累計20件のアポイントでしたが、アポ匠のターゲティング選定でアポ分析を行いリターゲティング、開始1週間で20件のアポイントを獲得。
+
+    section.pricing-cards-section[style="background-image: url('#{asset_path('bg-imagee.png')}');"]
+      .container
+        h2.pricing-cards-title
+          | 料金プラン
+        .row.justify-content-center.g-4.d-none.d-md-flex
+          .col-lg-4.col-md-6
+            .pricing-cards-card
+              h3.pricing-cards-plan-title
+                | 成功報酬プラン
+              p.pricing-cards-plan-sub
+                | success fee
+              h4.pricing-cards-price
+                | 
+              button.pricing-cards-btn.btn-gray
+                | BtoB
+              .pricing-cards-features
+                .pricing-cards-feature
+                  span
+                    | 初期費用
+                  span
+                    | 0〜98,000円
+                hr
+                .pricing-cards-feature
+                  span
+                    | リスト制作費
+                  span
+                    | 0円〜
+                hr
+                .pricing-cards-feature
+                  span
+                    | スクリプト構成費
+                  span
+                    | 0~19,800円
+                hr
+                .pricing-cards-feature
+                  span
+                    | 成果報酬費
+                  span
+                    | 5,000~35,000円
+                hr
+                .pricing-cards-feature
+                  span
+                    | 受付可能想定アポ率
+                  span
+                    | 0.6%以上
+                hr
+                .pricing-cards-feature
+                  span
+                    | ご利用期間
+                  span
+                    | 3〜6ヶ月
+              br/
+              a.pricing-cards-main-btn.btn-gray.nav-link-custom href="javascript:void(0)" data-target="inquiry"
+                | まずは無料見積 〉
+          .col-lg-4.col-md-6
+            .pricing-cards-card
+              h3.pricing-cards-plan-title
+                | コール課金
+              p.pricing-cards-plan-sub
+                | Call charging
+              h4.pricing-cards-price
+                | 
+              button.pricing-cards-btn.btn-blue
+                | BtoB
+              .pricing-cards-features
+                .pricing-cards-feature
+                  span
+                    | 初期費用
+                  span
+                    | 0~98,000円
+                hr
+                .pricing-cards-feature
+                  span
+                    | リスト制作費
+                  span
+                    | 0円〜
+                hr
+                .pricing-cards-feature
+                  span
+                    | 1コール単価
+                  span
+                    | 110円〜
+                hr
+                .pricing-cards-feature
+                  span
+                    | 受付可能想定アポ率
+                  span
+                    | 案件問わず可
+                hr
+                .pricing-cards-feature
+                  span
+                    | ご利用期間
+                  span
+                    | 3〜6ヶ月
+              br/
+              a.pricing-cards-main-btn.btn-blue.nav-link-custom href="javascript:void(0)" data-target="inquiry"
+                | まずは無料見積 〉
+          .col-lg-4.col-md-6
+            .pricing-cards-card
+              h3.pricing-cards-plan-title
+                | フォーム送信プラン
+              p.pricing-cards-plan-sub
+                | Form submission
+              h4.pricing-cards-price
+                |
+              button.pricing-cards-btn.btn-green
+                | BtoB
+              .pricing-cards-features
+                .pricing-cards-feature
+                  span
+                    | 初期費用
+                  span
+                    | 0円
+                hr
+                .pricing-cards-feature
+                  span
+                    | リスト使用費
+                  span
+                    | 0円
+                hr
+                .pricing-cards-feature
+                  span
+                    | 月額費用
+                  span
+                    | 39,800円
+                hr
+                .pricing-cards-feature
+                  span
+                    | 上限送信数
+                  span
+                    | 25,000件
+                hr
+                .pricing-cards-feature
+                  span
+                    | 契約期間
+                  span
+                    | なし
+                hr
+              br/
+              a.pricing-cards-main-btn.btn-green.nav-link-custom href="javascript:void(0)" data-target="inquiry"
+                | 無料トライアル 〉
+
+
     section#inquiry
       .container
         .col-lg-12
@@ -287,10 +443,22 @@
                     = f.text_field :company, class: "form-control hero-main-input", placeholder: "株式会社〇〇〇〇", required: true
                   .col-12
                     label.form-label.hero-main-label
-                      | お名前 
+                      | ご担当者様名
                       span.required-badge
                         | 必須
                     = f.text_field :name, class: "form-control hero-main-input", placeholder: "山田太郎", required: true
+                  .col-12
+                    label.form-label.hero-main-label
+                      | 電話番号 
+                      span.required-badge
+                        | 必須
+                    = f.telephone_field :tel, class: "form-control hero-main-input", placeholder: "050-1234-5678", required: true
+                  .col-12
+                    label.form-label.hero-main-label
+                      | URL
+                      span.required-badge
+                        | 必須
+                    = f.url_field :url, class: "form-control hero-main-input", placeholder: "https://ri-plus.jp/", required: true
                   .col-12
                     label.form-label.hero-main-label
                       | 会社のメールアドレス 
@@ -299,10 +467,10 @@
                     = f.email_field :email, class: "form-control hero-main-input", placeholder: "test@example.com", required: true
                   .col-12
                     label.form-label.hero-main-label
-                      | 電話番号 
+                      | 備考・要望 
                       span.required-badge
-                        | 必須
-                    = f.telephone_field :tel, class: "form-control hero-main-input", placeholder: "050-1234-5678", required: true
+                        | 任意
+                    = f.text_area :message, class: "form-control hero-main-input", placeholder:"（例）お問い合わせ内容"
                   .col-12
                     = f.submit "まずは無料で見積から", class: "btn hero-main-submit w-100"
 
