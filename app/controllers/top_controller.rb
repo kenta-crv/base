@@ -3,6 +3,9 @@ class TopController < ApplicationController
     @contract = Contract.new
   end
 
+  def information
+  end
+
   def lp 
     @top = Top.new
   end
